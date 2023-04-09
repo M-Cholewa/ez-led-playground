@@ -1,0 +1,32 @@
+Wymagania funkcjonalne:
+-login page
+  -logowanie, wyświetlanie błędu
+-urządzenia
+|=DEVICES=|| ID | DEV_ID | NAME | WIDTH | HEIGHT | API_KEY | ACTIVE_WORKSPACE |
+  -lista
+    -menu trzykropki
+        -usuń urządzenie (usuwa powiązane workspejsy)
+    -dodaj urządzenie (max 2000px)
+      -dodaje urządzenie i zwraca klucz API
+  # -podgląd
+  #   -wyświetla telemetrię
+  #   -wyświetla czy urządzenie online
+|=DEVICE_TELEMETRY=|| ID | DEV_ID | BOARD_TEMPERATURE | POWER_W | UPTIME_S | FW_VER | STATUS | UPDATE_TS |
+-workspace
+|=WORKSPACES=|| ID | USR_ID | DEV_ID | NAME | WORKSPACE_BYTES (15kB max, aby przechowac GIF) |  # usuwane gdy nie ma urządzenia / usera
+  -lista
+    -dodaj (max 3)
+    -usuń
+  -edytuj
+    -wyświetla rysunek
+    -pozwala na jego edycję (kolor, pixel)
+    -pozwala na edycję obrazkiem
+    -pozwala na dodanie gif'a
+    -pozwala na ustawienie czy to aktywny workspace
+    -Zatwierdź -> wysyła do backendu workspace, backend kompresuje to z LZW i wrzuca do DB. Potem wysyła powiadomienie do websocketów.
+-admin - użytkownicy
+|=USERS=|| ID | LOGIN | PWD_HASH | IS_ADMIN |
+      -dodaj
+      -usuń
+
+|=USERS_DEVICES=|| ID | USR_ID | DEV_ID | # usuwane gdy nie ma urządzenia / usera
