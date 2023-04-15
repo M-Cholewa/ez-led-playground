@@ -6,17 +6,16 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script
-      src="https://kit.fontawesome.com/c1c8d29a2a.js"
-      crossorigin="anonymous"
-    ></script>
     <title>LEDs play - devices</title>
   </head>
   <body>
     <div class="base-container">
+      <section class="base-overlay" id="base-overlay"></section>
       <header>
         <img src="../img/logo.svg" />
-        <i class="fa-solid fa-bars"></i>
+        <a id="base-drawer-btn">
+          <i class="fa-solid fa-bars"></i>
+        </a>
       </header>
       <nav>
         <img src="../img/logo.svg" />
@@ -36,9 +35,14 @@
             <button class="base-btn">New</button>
           </div>
           <div class="base-section-body">
-            <input type="text" class="search" placeholder="Search" />
+            <input
+              id="base-search-input"
+              type="text"
+              class="search"
+              placeholder="Search"
+            />
             <table>
-              <tbody>
+              <thead>
                 <tr>
                   <th>Name</th>
                   <th>Width</th>
@@ -46,8 +50,18 @@
                   <th>API key</th>
                   <th>Active workspace</th>
                 </tr>
+              </thead>
+              <tbody>
                 <tr>
-                  <td>Device 1</td>
+                  <td>
+                    <div class="base-table-first-cell">
+                      Device 1
+                      <a>
+                        <i class="fa-solid fa-circle-chevron-down"></i>
+                        <i class="fa-solid fa-circle-chevron-up"></i>
+                      </a>
+                    </div>
+                  </td>
                   <td>48</td>
                   <td>32</td>
                   <td>zaCELgL.0imfnc8mVLWwy</td>
@@ -61,7 +75,15 @@
                 </tr>
 
                 <tr>
-                  <td>Device 2</td>
+                  <td>
+                    <div class="base-table-first-cell">
+                      Device 2
+                      <a>
+                        <i class="fa-solid fa-circle-chevron-down"></i>
+                        <i class="fa-solid fa-circle-chevron-up"></i>
+                      </a>
+                    </div>
+                  </td>
                   <td>48</td>
                   <td>32</td>
                   <td>0imfnc8mVLWwsAawjYr4R</td>
@@ -74,7 +96,15 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>Device 3</td>
+                  <td>
+                    <div class="base-table-first-cell">
+                      Device 3
+                      <a>
+                        <i class="fa-solid fa-circle-chevron-down"></i>
+                        <i class="fa-solid fa-circle-chevron-up"></i>
+                      </a>
+                    </div>
+                  </td>
                   <td>48</td>
                   <td>32</td>
                   <td>sAawjYr4Rx-Af50DDqtlxAt</td>
@@ -90,7 +120,19 @@
             </table>
           </div>
         </section>
+
+        <button class="base-floating-btn">
+          <i class="fa-solid fa-plus"></i>
+        </button>
       </main>
     </div>
   </body>
+
+  <footer>
+    <script
+      src="https://kit.fontawesome.com/c1c8d29a2a.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../js/base.js"></script>
+  </footer>
 </html>
