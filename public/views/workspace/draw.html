@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../../css/style.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/draw.css" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LEDs play - Draw</title>
+  </head>
+  <body>
+    <div class="draw-container">
+      <div class="toolbox">
+        <div class="tooblox-group">
+          <div class="tooblox-group-item">
+            <button>
+              <img src="../../img/logoNoText.svg" />
+            </button>
+          </div>
+        </div>
+        <div class="tooblox-group">
+          <div class="tooblox-group-item tgi-small">
+            <button id="erase-btn">
+              <img src="../../img/draw/erase.svg" />
+            </button>
+          </div>
+          <div class="tooblox-group-item tgi-small active">
+            <button id="draw-btn">
+              <img src="../../img/draw/pencil.svg" />
+            </button>
+          </div>
+          <div class="tooblox-group-item tgi-small">
+            <button id="upload-btn">
+              <img src="../../img/draw/upload.svg" />
+            </button>
+          </div>
+          <div class="tooblox-group-item tgi-small">
+            <button id="save-btn">
+              <img src="../../img/draw/checkmark.svg" />
+            </button>
+          </div>
+        </div>
+        <div class="tooblox-group">
+          <div class="tooblox-group-item tgi-medium">
+            <button id="color-picker-btn">
+              <input type="color" class="color-picker" />
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="draw-section">
+        <div
+          class="draw-canvas"
+          id="draw-canvas"
+          matrixW="48"
+          matrixH="32"
+        ></div>
+      </div>
+    </div>
+  </body>
+
+  <footer>
+    <script
+      src="https://kit.fontawesome.com/c1c8d29a2a.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../../js/draw/drawing.js"></script>
+  </footer>
+</html>
