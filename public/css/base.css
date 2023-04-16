@@ -73,6 +73,10 @@ main {
   border-bottom: 1px solid gray;
 }
 
+.base-section-header > button {
+  width: 10%;
+}
+
 .base-btn {
   background: #4a148c;
   box-shadow: 0px 3px 6px #00000029;
@@ -80,9 +84,13 @@ main {
   border: none;
   color: white;
   margin: 1em;
-  width: 10%;
   line-height: 3em;
   cursor: pointer;
+}
+
+.base-container-bottom-btn {
+  align-self: end;
+  width: 30%;
 }
 
 .base-section-body {
@@ -192,6 +200,10 @@ header > a:active {
   main {
     width: 100vw;
   }
+
+  .base-container-bottom-btn {
+    width: 50%;
+  }
 }
 
 .base-floating-btn {
@@ -260,6 +272,11 @@ header > a:active {
     flex-direction: column;
     justify-content: space-evenly;
     max-height: 90%;
+  }
+
+  .base-container-bottom-btn {
+    width: 100%;
+    align-self: center;
   }
 
   /* TABLE SCALE FOR MOBILE */

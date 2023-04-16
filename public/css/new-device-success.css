@@ -4,11 +4,6 @@
   justify-content: space-between;
 }
 
-.nds-container > button {
-  align-self: flex-end;
-  width: 20%;
-}
-
 .nds-container > .nds-api-message {
   align-self: center;
 }
@@ -34,10 +29,4 @@
   overflow: auto;
   word-break: break-all;
   text-align: center;
-}
-
-@media only screen and (max-device-width: 700px) {
-  .nds-container > button {
-    width: 50%;
-  }
 }

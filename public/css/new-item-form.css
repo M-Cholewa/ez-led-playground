@@ -30,6 +30,21 @@
   border-radius: 1.5em;
   background-color: transparent;
   padding: 1em;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+select.nif-input {
+  appearance: none;
+  background-image: url("../img/dropdownArrow.svg");
+  background-repeat: no-repeat;
+  background-position: right 0.7rem top 50%;
+  background-size: 0.65rem auto;
+}
+
+.nif-input[type="checkbox"] {
+  width: auto;
+  margin-right: 1em;
 }
 
 .nif-create-group {
@@ -52,6 +67,11 @@
 @media only screen and (max-device-width: 1080px) {
   .nif-input-container {
     width: 100%;
+  }
+}
+
+@media only screen and (max-device-width: 700px) {
+  .nif-input-container {
     grid-template-columns: 1fr;
   }
 
@@ -60,6 +80,6 @@
   }
 
   .nif-input {
-    width: 50%;
+    width: 850%;
   }
 }

@@ -1,0 +1,21 @@
+@media only screen and (max-device-width: 700px) {
+  td:nth-of-type(1):before {
+    content: "Name" !important;
+  }
+
+  td:nth-of-type(2):before {
+    content: "Target name" !important;
+  }
+
+  td:nth-of-type(3):before {
+    content: "Width" !important;
+  }
+
+  td:nth-of-type(4):before {
+    content: "Height" !important;
+  }
+
+  td:nth-of-type(5):before {
+    content: none !important;
+  }
+}

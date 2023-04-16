@@ -3,11 +3,11 @@
   <head>
     <link rel="stylesheet" type="text/css" href="../../css/style.css" />
     <link rel="stylesheet" type="text/css" href="../../css/base.css" />
-    <link rel="stylesheet" type="text/css" href="../../css/new-item-form.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/telemetry.css" />
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LEDs play - new device</title>
+    <title>LEDs play - telemetry</title>
   </head>
   <body>
     <div class="base-container">
@@ -32,33 +32,30 @@
       <main>
         <section class="base-section">
           <div class="base-section-header">
-            <h1>New device</h1>
+            <h1>Telemetry</h1>
           </div>
           <div class="base-section-body">
-            <form class="nif-form">
-              <div class="nif-input-container">
-                <!-- nif -> new item form -->
-                <div class="nif-item">Device name</div>
-                <div class="nif-item nif-item-input">
-                  <input type="text" class="nif-input" placeholder="Device 1" />
-                </div>
-                <div class="nif-item">LED matrix width</div>
-                <div class="nif-item nif-item-input">
-                  <input type="number" class="nif-input" placeholder="48" />
-                </div>
-                <div class="nif-item">LED matrix height</div>
-                <div class="nif-item nif-item-input">
-                  <input type="number" class="nif-input" placeholder="32" />
-                </div>
+            <div class="telemetry-container">
+              <div class="telemetry-grid">
+                <div>Target</div>
+                <div>Device 1, led matrix 48x32</div>
+                <div>Status</div>
+                <div>Running</div>
+                <div>Updated At</div>
+                <div>03.04.2023, 13:06:24</div>
+                <div>Board Temperature</div>
+                <div>25 °C</div>
+                <div>Power draw</div>
+                <div>7 Wat</div>
+                <div>Uptime</div>
+                <div>2d 1h 3m 7s</div>
+                <div>Firmware version</div>
+                <div>1.13.0_beta</div>
               </div>
-              <div class="nif-create-group">
-                <p>Device creation failed:</p>
-                <p>You can only have 3 devices</p>
-                <button class="base-btn base-container-bottom-btn">
-                  Create
-                </button>
-              </div>
-            </form>
+              <button class="base-btn base-container-bottom-btn">
+                Show devices
+              </button>
+            </div>
           </div>
         </section>
       </main>

@@ -1,0 +1,44 @@
+.telemetry-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.telemetry-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 50%;
+}
+
+.telemetry-grid :nth-child(2n-1) {
+  font-weight: bold;
+  border-right: 1px solid gray;
+}
+
+.telemetry-grid > div {
+  padding: 1em;
+}
+
+.telemetry-grid > div:not(:nth-last-child(1)):not(:nth-last-child(2)) {
+  border-bottom: 1px solid gray;
+}
+
+@media only screen and (max-device-width: 1080px) {
+  .telemetry-grid {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-device-width: 700px) {
+  .telemetry-grid {
+    grid-template-columns: 1fr;
+  }
+  .telemetry-grid > div {
+    border: none !important;
+    padding: 0em;
+  }
+  .telemetry-grid :nth-child(2n) {
+    margin-bottom: 0.5em;
+  }
+}

@@ -7,7 +7,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LEDs play - new device</title>
+    <title>LEDs play - new workspace</title>
   </head>
   <body>
     <div class="base-container">
@@ -21,8 +21,8 @@
       <nav>
         <img src="../../img/logo.svg" />
         <ul class="base-menu">
-          <li><a href="#" class="active">Device</a></li>
-          <li><a href="#">Workspace</a></li>
+          <li><a href="#">Device</a></li>
+          <li><a href="#" class="active">Workspace</a></li>
           <li><a href="#">Admin</a></li>
         </ul>
         <ul>
@@ -32,28 +32,32 @@
       <main>
         <section class="base-section">
           <div class="base-section-header">
-            <h1>New device</h1>
+            <h1>New workspace</h1>
           </div>
           <div class="base-section-body">
             <form class="nif-form">
               <div class="nif-input-container">
                 <!-- nif -> new item form -->
-                <div class="nif-item">Device name</div>
+                <div class="nif-item">Workspace name</div>
                 <div class="nif-item nif-item-input">
-                  <input type="text" class="nif-input" placeholder="Device 1" />
+                  <input
+                    type="text"
+                    class="nif-input"
+                    placeholder="Workspace 1"
+                  />
                 </div>
-                <div class="nif-item">LED matrix width</div>
+                <div class="nif-item">Target device</div>
                 <div class="nif-item nif-item-input">
-                  <input type="number" class="nif-input" placeholder="48" />
-                </div>
-                <div class="nif-item">LED matrix height</div>
-                <div class="nif-item nif-item-input">
-                  <input type="number" class="nif-input" placeholder="32" />
+                  <select name="target" id="target" class="nif-input">
+                    <option value="1">Device 1</option>
+                    <option value="2">Device 2</option>
+                    <option value="3">Device 3</option>
+                  </select>
                 </div>
               </div>
               <div class="nif-create-group">
-                <p>Device creation failed:</p>
-                <p>You can only have 3 devices</p>
+                <p>Workspace creation failed:</p>
+                <p>you can only have 3 workspaces</p>
                 <button class="base-btn base-container-bottom-btn">
                   Create
                 </button>
