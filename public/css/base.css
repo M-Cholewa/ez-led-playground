@@ -157,10 +157,6 @@ header > a {
   margin: 1em;
 }
 
-header > a:active {
-  color: red;
-}
-
 .base-overlay {
   position: absolute;
   width: 100%;
@@ -237,10 +233,6 @@ header > a:active {
 .base-table-first-cell > a {
   display: none;
   font-size: larger;
-}
-
-.base-table-first-cell > a:active {
-  color: red;
 }
 
 @media only screen and (max-device-width: 700px) {

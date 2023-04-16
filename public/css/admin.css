@@ -1,0 +1,13 @@
+@media only screen and (max-device-width: 700px) {
+  td:nth-of-type(1):before {
+    content: "Name" !important;
+  }
+
+  td:nth-of-type(2):before {
+    content: "Admin" !important;
+  }
+
+  td:nth-of-type(3):before {
+    content: none !important;
+  }
+}
