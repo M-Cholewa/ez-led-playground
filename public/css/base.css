@@ -88,6 +88,7 @@ main {
 .base-section-body {
   padding: 2em;
   overflow: auto;
+  flex-grow: 1;
 }
 
 .base-section-body > table {
@@ -237,6 +238,14 @@ header > a:active {
 
   .base-section {
     height: 85%;
+  }
+
+  .base-section-header {
+    justify-content: center;
+  }
+
+  .base-section-header > h1 {
+    text-align: center;
   }
 
   .base-section-header > .base-btn {
