@@ -1,3 +1,5 @@
+const MAX_SIZE_PX = 2000;
+
 const onEraseClick = () => {};
 const onDrawClick = () => {};
 const onUploadClick = () => {};
@@ -40,6 +42,8 @@ function CanvasPlayground(canvasDiv) {
     return;
   }
 
+  // =============variables=============== //
+
   this.canvasDiv = canvasDiv;
   this.ctx = null;
 
@@ -54,7 +58,17 @@ function CanvasPlayground(canvasDiv) {
     this.matrixH = 1;
   }
 
+  if (this.matrixW * this.matrixH > MAX_SIZE_PX) {
+    console.error(`Max size cannot be higher than ${MAX_SIZE_PX} px`);
+    return;
+  }
+
   this.cellSizePX = 0;
+
+  this.canvasData = new Array(this.matrixW * this.matrixH * 3); // 3 bytes of color
+  this.drawing = false;
+
+  // =============functions=============== //
 
   this.clearCanvas = () => {
     this.ctx.clearRect(0, 0, canvasDiv.width, canvasDiv.height);
@@ -85,6 +99,8 @@ function CanvasPlayground(canvasDiv) {
     const canvasDivWidthPX = this.canvasDiv.offsetWidth;
     const canvasDivHeightPX = this.canvasDiv.offsetHeight;
 
+    console.log(" w: " + canvasDivWidthPX + " H " + canvasDivHeightPX);
+
     // get max cell size based on parent dimensions
     const maxWidthCellSize = canvasDivWidthPX / this.matrixW;
     const maxHeightCellSize = canvasDivHeightPX / this.matrixH;
@@ -106,7 +122,10 @@ function CanvasPlayground(canvasDiv) {
     canvas.width = canvasWidth;
     canvas.height = canvasHeight;
 
-    // add new canvas to parent div
+    // add event handlers to canvas
+    this.addCanvasEvents(canvas);
+
+    // add new canvas to parent div, remove previous
     this.canvasDiv.innerHTML = "";
     this.canvasDiv.appendChild(canvas);
 
@@ -114,9 +133,30 @@ function CanvasPlayground(canvasDiv) {
     this.ctx = canvas.getContext("2d");
   };
 
+  this.addCanvasEvents = (canvas) => {
+    canvas.addEventListener("mousedown", this.onMouseDown);
+    canvas.addEventListener("mousemove", this.onMouseMove);
+    canvas.addEventListener("mouseup", this.onMouseUp);
+  };
+
+  // =============event handlers=============== //
+
   this.onWindowResize = () => {
+    console.log("resize");
     this.recreateCanvasElement();
     this.redraw();
+  };
+
+  this.onMouseDown = () => {
+    this.drawing = true;
+  };
+
+  this.onMouseMove = () => {
+    if (!this.drawing) return;
+  };
+
+  this.onMouseUp = () => {
+    this.drawing = false;
   };
 }
 

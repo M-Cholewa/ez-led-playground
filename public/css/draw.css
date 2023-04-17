@@ -12,12 +12,16 @@
   justify-content: space-between;
   width: 5%;
   background: rgba(0, 0, 0, 0.4);
-  min-width: 90px;
+  /* min-width: 90px; */
 }
 
 .tooblox-group {
   display: flex;
   flex-direction: column;
+}
+
+.tooblox-group.unknown-width {
+  aspect-ratio: 1;
 }
 
 .tooblox-group-item {
@@ -32,7 +36,6 @@
   border: none;
   background: none;
   cursor: pointer;
-  padding: 1em;
   width: 100%;
   height: 100%;
 }
@@ -42,11 +45,11 @@
 }
 
 .tgi-small > button {
-  padding: 1.8em !important;
+  padding: 25% !important;
 }
 
 .tgi-medium > button {
-  padding: 1.3em !important;
+  padding: 15% !important;
 }
 
 .tooblox-group-item > button > img {
@@ -58,7 +61,7 @@
   width: 100%;
   height: 100%;
   box-sizing: border-box;
-  border: 0.7em solid gray;
+  border: 0.3vw solid gray;
   border-radius: 1.5em;
   background: gray;
   cursor: pointer;
@@ -69,12 +72,12 @@
   justify-content: center;
   align-items: center;
   flex-grow: 1;
+  width: 95%;
 }
 
 .draw-canvas {
   width: 95%;
   height: 95%;
-  /* background-color: white; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -82,4 +85,35 @@
 
 .draw-canvas > canvas {
   background: white;
+}
+
+@media only screen and (max-device-width: 700px) {
+  .draw-container {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .toolbox {
+    flex-direction: row;
+    width: 100%;
+    height: 5%;
+  }
+
+  .tooblox-group {
+    flex-direction: row;
+  }
+
+  .tooblox-group-item {
+    height: 90%;
+    width: auto;
+    align-self: center;
+  }
+
+  .tooblox-group-item > button {
+    padding: 0% !important;
+  }
+
+  .color-picker {
+    border: 0.2em solid gray;
+  }
 }
