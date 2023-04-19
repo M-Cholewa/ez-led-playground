@@ -104,13 +104,22 @@
   }
 
   .tooblox-group-item {
-    height: 90%;
+    height: 100%;
     width: auto;
     align-self: center;
+    overflow: hidden;
   }
 
   .tooblox-group-item > button {
     padding: 0% !important;
+  }
+
+  .tgi-small > button {
+    padding: 15% !important;
+  }
+
+  .tgi-medium > button {
+    padding: 10% !important;
   }
 
   .color-picker {
