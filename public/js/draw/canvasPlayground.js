@@ -4,7 +4,7 @@ const BRUSH = 1;
 const ERASER = 2;
 
 const ERASER_COLOR = "#ffffff";
-const CANVAS_STARTUP_DATA = "rgba(255, 255, 255,1)";
+const CANVAS_STARTUP_DATA = "#ffffff";
 
 function CanvasPlayground(canvasDiv) {
   if (canvasDiv == null) {
@@ -41,7 +41,9 @@ function CanvasPlayground(canvasDiv) {
     CANVAS_STARTUP_DATA
   ); // 3 bytes of color
   this.drawing = false;
-  this.mousePoint = 0;
+  this.mousePoint = null;
+
+  this.canvasDOMRect = null;
 
   var __redrawTask = setInterval(() => {
     try {
@@ -123,6 +125,9 @@ function CanvasPlayground(canvasDiv) {
     // add new canvas to parent div, remove previous
     this.canvasDiv.innerHTML = "";
     this.canvasDiv.appendChild(canvas);
+
+    //get DOMRect for positioning
+    this.canvasDOMRect = canvas.getBoundingClientRect();
 
     //create new context
     this.ctx = canvas.getContext("2d");
@@ -226,18 +231,28 @@ function CanvasPlayground(canvasDiv) {
   };
 
   // =============utility=============== //
-  this.xCoordToGridX = (x) => {
-    if (x == 0 || this.cellSizePX == 0) return 0;
-    var rawGridX = x / this.cellSizePX;
+  // x = window X position
+  this.xCoordToGridX = (windowX) => {
+    if (windowX == 0 || this.cellSizePX == 0 || this.canvasDOMRect == null)
+      return 0;
+
+    let _x = windowX - this.canvasDOMRect.x;
+
+    var rawGridX = _x / this.cellSizePX;
     var parsedGridX = parseInt(rawGridX);
     if (parsedGridX > this.matrixW) parsedGridX = this.matrixW - 1;
 
     return parsedGridX;
   };
 
-  this.yCoordToGridY = (y) => {
-    if (y == 0 || this.cellSizePX == 0) return 0;
-    var rawGridY = y / this.cellSizePX;
+  // y = window Y position
+  this.yCoordToGridY = (windowY) => {
+    if (windowY == 0 || this.cellSizePX == 0 || this.canvasDOMRect == null)
+      return 0;
+
+    let _y = windowY - this.canvasDOMRect.y;
+
+    var rawGridY = _y / this.cellSizePX;
     var parsedGridY = parseInt(rawGridY);
     if (parsedGridY > this.matrixH) parsedGridY = this.matrixH - 1;
     return parsedGridY;
