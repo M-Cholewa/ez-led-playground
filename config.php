@@ -1,6 +1,6 @@
 <?php
 
-const USERNAME = '';
-const PASSWORD = '';
-const HOST = '';
-const DATABASE = '';
+const USERNAME = 'dbuser';
+const PASSWORD = 'dbpwd';
+const HOST = 'localhost';
+const DATABASE = 'dbname';
