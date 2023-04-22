@@ -8,12 +8,14 @@ class User
     private $password;
     private $isAdmin;
 
+    private $id;
 
-    public function __construct(string $email, string $password, bool $isAdmin)
+    public function __construct(string $email, string $password, bool $isAdmin, int $id)
     {
         $this->email = $email;
         $this->password = $password;
         $this->isAdmin = $isAdmin;
+        $this->id = $id;
     }
 
     /**
@@ -62,6 +64,22 @@ class User
     public function setIsAdmin(bool $isAdmin)
     {
         $this->isAdmin = $isAdmin;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id): void
+    {
+        $this->id = $id;
     }
 
 

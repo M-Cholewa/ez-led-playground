@@ -25,13 +25,14 @@
       <nav>
         <img src="public/../img/logo.svg" />
         <ul class="base-menu">
-          <li><a href="#">Device</a></li>
-          <li><a href="#">Workspace</a></li>
+          <li><a href="devices">Devices</a></li>
+          <li><a href="workspaces">Workspaces</a></li>
           <li><a href="#" class="active">Admin</a></li>
         </ul>
         <ul>
-          <li><a href="#">Log out</a></li>
+          <li><a href="logout">Log out</a></li>
         </ul>
+
       </nav>
       <main>
         <section class="base-section">

@@ -21,12 +21,12 @@
       <nav>
         <img src="public/../img/logo.svg" />
         <ul class="base-menu">
-          <li><a href="#" class="active">Device</a></li>
-          <li><a href="#">Workspace</a></li>
-          <li><a href="#">Admin</a></li>
+          <li><a href="#" class="active">Devices</a></li>
+          <li><a href="workspaces">Workspaces</a></li>
+          <li><a href="admin">Admin</a></li>
         </ul>
         <ul>
-          <li><a href="#">Log out</a></li>
+          <li><a href="logout">Log out</a></li>
         </ul>
       </nav>
       <main>

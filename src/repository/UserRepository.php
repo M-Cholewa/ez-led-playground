@@ -25,7 +25,8 @@ class UserRepository extends Repository
         return new User(
             $user['email'],
             $user['password'],
-            $user['isAdmin']
+            $user['is_admin'],
+            $user['id']
         );
     }
 }

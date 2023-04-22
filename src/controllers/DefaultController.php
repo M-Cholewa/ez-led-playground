@@ -9,8 +9,4 @@ class DefaultController extends AppController {
         $this->render('login');
     }
 
-    public function devices()
-    {
-        $this->render('device/devices');
-    }
 }

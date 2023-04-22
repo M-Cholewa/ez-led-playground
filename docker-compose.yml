@@ -20,7 +20,9 @@ services:
       - .:/app/
 
   db:
-    image: postgres:latest
+    build:
+      context: .
+      dockerfile: docker/postgres/Dockerfile
     restart: always
     environment:
       - POSTGRES_DB=${DB_NAME}

@@ -19,6 +19,16 @@ class AppController
         return $this->request === 'GET';
     }
 
+    protected function redirect(string $route){
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("Location: {$url}/{$route}");
+    }
+
+    protected function redirectLogin(){
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("Location: {$url}/login");
+    }
+
     protected function render(string $template = null, array $variables = [])
     {
         $templatePath = 'public/views/' . $template . '.php';
