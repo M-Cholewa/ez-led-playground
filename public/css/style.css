@@ -44,6 +44,7 @@ form {
   color: white;
   margin: 1em;
   line-height: 3em;
+  cursor: pointer;
 }
 
 .login-form-container > form > input {

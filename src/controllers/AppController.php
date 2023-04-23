@@ -19,14 +19,31 @@ class AppController
         return $this->request === 'GET';
     }
 
-    protected function redirect(string $route){
+    protected function redirect(string $route)
+    {
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/{$route}");
     }
 
-    protected function redirectLogin(){
+    protected function redirectLogin()
+    {
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/login");
+    }
+
+    protected function isJsonContentType(): bool
+    {
+        $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
+        return $contentType === "application/json";
+    }
+
+    protected function getJsonDecoded(): array
+    {
+        if ($this->isJsonContentType()) {
+            $content = trim(file_get_contents("php://input"));
+            return json_decode($content, true);
+        }
+        return [];
     }
 
     protected function render(string $template = null, array $variables = [])

@@ -3,12 +3,15 @@
 use models\User;
 
 require_once 'AppController.php';
+require_once __DIR__ . '/../models/User.php';
 
 class SafeController extends AppController
 {
 
     public function __construct(bool $adminOnly = false)
     {
+        parent::__construct();
+
         session_start();
 
         if (!isset($_SESSION['user'])) {
@@ -23,7 +26,7 @@ class SafeController extends AppController
 
     protected function getUser():?User
     {
-        return $_SESSION['user'];
+        return unserialize($_SESSION['user']);
     }
 
 }

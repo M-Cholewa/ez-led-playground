@@ -47,6 +47,6 @@ class SecurityController extends AppController
     private function storeSessionCookie(User $user)
     {
         session_start();
-        $_SESSION['user'] = $user;
+        $_SESSION['user'] = serialize($user);
     }
 }

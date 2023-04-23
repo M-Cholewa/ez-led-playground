@@ -88,6 +88,13 @@ main {
   cursor: pointer;
 }
 
+.base-btn > a{
+  text-decoration: none;
+  display: block;
+  color: unset;
+}
+
+
 .base-container-bottom-btn {
   align-self: end;
   width: 30%;
