@@ -37,22 +37,22 @@ class DeviceController extends SafeController
         }
 
         $user = $this->getUser();
-        $device_id = $_GET['device_id'];
+        $id_device = $_GET['id_device'];
 
-        if ($device_id == null) {
+        if ($id_device == null) {
             $this->redirect("devices");
             return;
         }
 
-        $hasUserDevice = $this->deviceRepository->hasUserDevice($device_id, $user->getId());
+        $hasUserDevice = $this->deviceRepository->hasUserDevice($id_device, $user->getId());
 
         if (!$hasUserDevice) {
             $this->redirectLogin();
             return;
         }
 
-        $device = $this->deviceRepository->get_ById($device_id);
-        $telemetry = $this->telemetryRepository->getTelemetry($device_id);
+        $device = $this->deviceRepository->get_ById($id_device);
+        $telemetry = $this->telemetryRepository->getTelemetry($id_device);
 
         $this->render('device/telemetry', ["telemetry" => $telemetry, "device" => $device]);
     }

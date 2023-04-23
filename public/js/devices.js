@@ -56,7 +56,7 @@ function pushDeviceToTable(device) {
         clone.querySelector('td[my-role="device-height"]').innerHTML = device.height;
         clone.querySelector('td[my-role="device-api-key"]').innerHTML = device.api_key;
         clone.querySelector('td[my-role="device-active-workspace-name"]').innerHTML = device.workspace_name;
-        clone.querySelector('a[my-role="device-telemetry-href"]').setAttribute("href", `telemetry?device_id=${device.id}`);
+        clone.querySelector('a[my-role="device-telemetry-href"]').setAttribute("href", `telemetry?id_device=${device.id}`);
 
         tableBody.appendChild(clone);
 

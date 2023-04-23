@@ -4,6 +4,7 @@ use models\Workspace;
 
 require_once 'Repository.php';
 require_once __DIR__ . '/../models/Workspace.php';
+require_once __DIR__ . '/../utility/LZW.php';
 
 class WorkspaceRepository extends Repository
 {
@@ -20,13 +21,12 @@ class WorkspaceRepository extends Repository
         $workspaces = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         foreach ($workspaces as $workspace) {
-
             $result[] = new Workspace(
                 $workspace['id'],
                 $workspace['id_user'],
                 $workspace['id_device'],
                 $workspace['name'],
-                $workspace['workspace_bytes']
+                $this->retrieveWorkspaceBytes($workspace['workspace_bytes'])
             );
         }
 
@@ -69,7 +69,7 @@ class WorkspaceRepository extends Repository
             $workspace['id_user'],
             $workspace['id_device'],
             $workspace['name'],
-            $workspace['workspace_bytes']
+            $this->retrieveWorkspaceBytes($workspace['workspace_bytes'])
         );
     }
 
@@ -106,6 +106,8 @@ class WorkspaceRepository extends Repository
 
     public function create(Workspace $workspace): bool
     {
+        $bytesToSend = $this->prepareWorkspaceBytes($workspace->getWorkspaceBytes());
+
         try {
 
             $stmt = $this->database->connect()->prepare('
@@ -116,7 +118,7 @@ class WorkspaceRepository extends Repository
                 $workspace->getIdUser(),
                 $workspace->getIdDevice(),
                 $workspace->getName(),
-                $workspace->getWorkspaceBytes()
+                $bytesToSend
             ]);
 
             return true;
@@ -127,12 +129,14 @@ class WorkspaceRepository extends Repository
 
     public function updateWorkspaceBytes_ById($id_workspace, $workspace_bytes): bool
     {
+        $bytesToSend = $this->prepareWorkspaceBytes($workspace_bytes);
+
         try {
             $stmt = $this->database->connect()->prepare('
             UPDATE workspaces SET workspace_bytes = :workspace_bytes where id = :id_workspace
         ');
             $stmt->bindParam(':id_workspace', $id_workspace, PDO::PARAM_INT);
-            $stmt->bindParam(':workspace_bytes', $workspace_bytes, PDO::PARAM_LOB);
+            $stmt->bindParam(':workspace_bytes', $bytesToSend, PDO::PARAM_LOB);
 
             $stmt->execute();
             return true;
@@ -157,5 +161,26 @@ class WorkspaceRepository extends Repository
         }
 
         return $count > 0;
+    }
+
+    private function retrieveWorkspaceBytes($resource): array
+    {
+        try {
+            $workspace_bytes = stream_get_contents($resource);
+            $workspace_bytes = \Utility\LZW::decompress($workspace_bytes);
+            return str_split($workspace_bytes, 2);
+        } catch (Exception $ex) {
+            return array(0);
+        }
+    }
+
+    private function prepareWorkspaceBytes(array $workspace_bytes): string
+    {
+        try {
+            $resource = implode($workspace_bytes);
+            return \Utility\LZW::compress($resource);
+        } catch (Exception $ex) {
+            return "";
+        }
     }
 }

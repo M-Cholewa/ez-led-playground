@@ -74,7 +74,7 @@
                                 <td><?= $device->getActiveWorkspaceName(); ?></td>
                                 <td>
                                     <a href="#" class="device-remove-btn"><i class="fa-solid fa-trash"></i></a>
-                                    <a href="telemetry?device_id=<?= $device->getId(); ?>">
+                                    <a href="telemetry?id_device=<?= $device->getId(); ?>">
                                         <i class="fa-solid fa-circle-arrow-right"></i>
                                     </a>
                                 </td>

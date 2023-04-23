@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link rel="stylesheet" type="text/css" href="public/../css/style.css" />
-    <link rel="stylesheet" type="text/css" href="public/../css/base.css" />
+    <link rel="stylesheet" type="text/css" href="public/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="public/css/base.css" />
     <link
       rel="stylesheet"
       type="text/css"
-      href="public/../css/new-item-form.css"
+      href="public/css/new-item-form.css"
     />
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -17,13 +17,13 @@
     <div class="base-container">
       <section class="base-overlay" id="base-overlay"></section>
       <header>
-        <img src="public/../img/logo.svg" />
+        <img src="public/img/logo.svg" />
         <a id="base-drawer-btn">
           <i class="fa-solid fa-bars"></i>
         </a>
       </header>
       <nav>
-        <img src="public/../img/logo.svg" />
+        <img src="public/img/logo.svg" />
         <ul class="base-menu">
           <li><a href="devices">Devices</a></li>
           <li><a href="#" class="active">Workspaces</a></li>
@@ -78,6 +78,6 @@
       src="https://kit.fontawesome.com/c1c8d29a2a.js"
       crossorigin="anonymous"
     ></script>
-    <script src="public/../js/base.js"></script>
+    <script src="public/js/base.js"></script>
   </footer>
 </html>

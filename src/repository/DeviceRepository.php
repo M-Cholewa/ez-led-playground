@@ -93,6 +93,47 @@ class DeviceRepository extends Repository
         );
     }
 
+    public function get_ByIds(array $ids_device): array
+    {
+        $result = array();
+
+        try {
+            $conn = $this->database->connect();
+            foreach (array_chunk($ids_device, 100) as $ids_chunk) {
+
+                $inQuery = implode(',', array_fill(0, count($ids_chunk), '?'));
+
+                $stmt = $conn->prepare('
+                    SELECT * FROM public.devices WHERE id IN (' . $inQuery . ')
+                ');
+
+                foreach ($ids_chunk as $k => $id)
+                    $stmt->bindValue(($k + 1), $id);
+
+                $stmt->execute();
+
+                $device = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                if (!$device) {
+                    continue;
+                }
+
+                $result[] = new Device(
+                    $device['id'],
+                    $device['name'],
+                    $device['width'],
+                    $device['height'],
+                    $device['api_key'],
+                    $device['workspace_name']
+                );
+            }
+
+            return $result;
+        } catch (Exception $e) {
+            return array();
+        }
+    }
+
     public function getCount_ByUserId(int $id_user): int
     {
         $stmt = $this->database->connect()->prepare('
