@@ -11,19 +11,6 @@ if (overlay != null) {
 }
 
 
-const addTableClicks = () => {
-    const accorddionButtons = document.querySelectorAll(".base-table-first-cell a");
-    const btns = [...accorddionButtons];
-
-    btns.forEach((btn) => {
-        btn.addEventListener("click", () => toggleAccoridionClick(btn));
-    });
-
-    const removeButtons = document.querySelectorAll(".device-remove-btn");
-    removeButtons.forEach((btn) => {
-        btn.addEventListener("click", removeDevice)
-    });
-}
 
 function toggleDrawerGroupVisibility() {
     try {
@@ -44,5 +31,3 @@ function toggleAccoridionClick(btn) {
     }
 }
 
-//onload
-addTableClicks();

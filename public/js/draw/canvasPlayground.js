@@ -233,7 +233,7 @@ function CanvasPlayground(canvasDiv) {
   // =============utility=============== //
   // x = window X position
   this.xCoordToGridX = (windowX) => {
-    if (windowX == 0 || this.cellSizePX == 0 || this.canvasDOMRect == null)
+    if (windowX === 0 || this.cellSizePX === 0 || this.canvasDOMRect == null)
       return 0;
 
     let _x = windowX - this.canvasDOMRect.x;
@@ -247,7 +247,7 @@ function CanvasPlayground(canvasDiv) {
 
   // y = window Y position
   this.yCoordToGridY = (windowY) => {
-    if (windowY == 0 || this.cellSizePX == 0 || this.canvasDOMRect == null)
+    if (windowY === 0 || this.cellSizePX === 0 || this.canvasDOMRect == null)
       return 0;
 
     let _y = windowY - this.canvasDOMRect.y;

@@ -39,8 +39,7 @@ class WorkspaceRepository extends Repository
 
         $stmt = $this->database->connect()->prepare('
             SELECT * FROM workspaces where id_user = :id_user 
-            AND
-            LOWER(workspaces.name) LIKE : workspace_name
+            AND LOWER(workspaces.name) LIKE :workspace_name
         ');
 
         $stmt->bindParam(':id_user', $id_user, PDO::PARAM_INT);
@@ -148,9 +147,9 @@ class WorkspaceRepository extends Repository
     public function hasUserWorkspace(int $id_workspace, int $id_user): bool
     {
         $stmt = $this->database->connect()->prepare('
-            SELECT count(id_user) FROM workspaces where id=:id_workspace and id_user = :id_user
+            SELECT count(id) FROM workspaces where id=:id_workspace and id_user = :id_user
         ');
-        $stmt->bindParam(':id_device', $id_workspace, PDO::PARAM_INT);
+        $stmt->bindParam(':id_workspace', $id_workspace, PDO::PARAM_INT);
         $stmt->bindParam(':id_user', $id_user, PDO::PARAM_INT);
         $stmt->execute();
 

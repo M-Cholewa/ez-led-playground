@@ -69,7 +69,7 @@
                             $device = $deviceWorkspace->getDevice();
 
                             ?>
-                            <tr>
+                            <tr workspace-id="<?= $workspace->getId() ?>">
                                 <td>
                                     <div class="base-table-first-cell">
                                         <span my-role="workspace-name"><?= $workspace->getName() ?></span>
@@ -83,8 +83,8 @@
                                 <td my-role="device-width"><?= $device->getWidth() ?></td>
                                 <td my-role="device-height"><?= $device->getHeight() ?></td>
                                 <td>
-                                    <a href="#"><i class="fa-solid fa-trash"></i></a>
-                                    <a href="draw?id_device=<?= $device->getId(); ?>" my-role="device-telemetry-href">
+                                    <a href="#" class="workspace-remove-btn"><i class="fa-solid fa-trash"></i></a>
+                                    <a href="draw?id_workspace=<?= $workspace->getId(); ?>" my-role="draw-href">
                                         <i class="fa-solid fa-paintbrush"></i>
                                     </a>
                                 </td>
@@ -108,11 +108,31 @@
         src="https://kit.fontawesome.com/c1c8d29a2a.js"
         crossorigin="anonymous"
     ></script>
+    <script src="public/js/workspaces.js"></script>
     <script src="public/js/base.js"></script>
 </footer>
 
-<template>
-
+<template id="workspace-row-template">
+    <tr workspace-id="-1">
+        <td>
+            <div class="base-table-first-cell">
+                <span my-role="workspace-name"></span>
+                <a>
+                    <i class="fa-solid fa-circle-chevron-down"></i>
+                    <i class="fa-solid fa-circle-chevron-up"></i>
+                </a>
+            </div>
+        </td>
+        <td my-role="device-name"></td>
+        <td my-role="device-width"></td>
+        <td my-role="device-height"></td>
+        <td>
+            <a href="#" class="workspace-remove-btn"><i class="fa-solid fa-trash"></i></a>
+            <a my-role="draw-href">
+                <i class="fa-solid fa-paintbrush"></i>
+            </a>
+        </td>
+    </tr>
 </template>
 
 </html>

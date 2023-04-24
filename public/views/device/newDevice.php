@@ -39,7 +39,7 @@
                 <h1>New device</h1>
             </div>
             <div class="base-section-body">
-                <form class="nif-form" action="createDevice" method="post">
+                <form class="nif-form" action="newDevice" method="post">
                     <div class="nif-input-container">
                         <!-- nif -> new item form -->
                         <div class="nif-item">Device name</div>

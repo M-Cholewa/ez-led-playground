@@ -59,12 +59,56 @@ class DeviceController extends SafeController
 
     public function newDevice()
     {
-        if (!$this->isGet()) {
-            $this->redirect("devices");
+        if ($this->isGet()) {
+            $this->render('device/newDevice');
             return;
         }
 
-        $this->render('device/newDevice');
+        if ($this->isPost()) {
+            $user_id = $this->getUser()->getId();
+
+            $deviceCount = $this->deviceRepository->getCount_ByUserId($user_id);
+
+            if ($deviceCount >= 3) {
+                $this->render('device/newDevice', ["message" => "You can only have 3 devices"]);
+                return;
+            }
+
+            $name = (is_string($_POST['name']) ? $_POST['name'] : "");
+            $width = (is_numeric($_POST['width']) ? (int)$_POST['width'] : 0);
+            $height = (is_numeric($_POST['height']) ? (int)$_POST['height'] : 0);
+
+            if ($width == 0 || $height == 0) {
+                $this->render('device/newDevice', ["message" => "Bad width/height"]);
+                return;
+            }
+
+            if ($width * $height > 2000) {
+                $this->render('device/newDevice', ["message" => "Max 2000 pixels"]);
+                return;
+            }
+
+            $nameLength = strlen($name);
+            if ($nameLength > 255 || $nameLength <= 1) {
+                $this->render('device/newDevice', ["message" => "Wrong name"]);
+                return;
+            }
+
+            $api_key = uniqid('apk_', true);
+
+            $device = new Device(-1, $name, $width, $height, $api_key, null);
+
+            if ($this->deviceRepository->create_byUserId($device, $user_id)) {
+                $this->render('device/newDeviceSuccess', ["api_key" => $api_key]);
+            } else {
+                $this->render('device/newDevice', ["message" => "Something went wrong, try again"]);
+            }
+
+            return;
+        }
+
+
+        $this->redirect("device/newDevice");
     }
 
     public function removeDevice()
@@ -91,7 +135,7 @@ class DeviceController extends SafeController
         }
     }
 
-    public function search()
+    public function searchDevice()
     {
         $searchValue = $this->getJsonDecoded()['search'];
 
@@ -108,54 +152,6 @@ class DeviceController extends SafeController
         http_response_code(200);
 
         echo json_encode($devicesByName);
-
-    }
-
-    public function createDevice()
-    {
-        if (!$this->isPost()) {
-            $this->redirect("newDevice");
-            return;
-        }
-
-        $user_id = $this->getUser()->getId();
-
-        $deviceCount = $this->deviceRepository->getCount_ByUserId($user_id);
-
-        if ($deviceCount >= 3) {
-            $this->render('device/newDevice', ["message" => "You can only have 3 devices"]);
-            return;
-        }
-
-        $name = (is_string($_POST['name']) ? $_POST['name'] : "");
-        $width = (is_numeric($_POST['width']) ? (int)$_POST['width'] : 0);
-        $height = (is_numeric($_POST['height']) ? (int)$_POST['height'] : 0);
-
-        if ($width == 0 || $height == 0) {
-            $this->render('device/newDevice', ["message" => "Bad width/height"]);
-            return;
-        }
-
-        if ($width * $height > 2000) {
-            $this->render('device/newDevice', ["message" => "Max 2000 pixels"]);
-            return;
-        }
-
-        $nameLength = strlen($name);
-        if ($nameLength > 255 || $nameLength <= 1) {
-            $this->render('device/newDevice', ["message" => "Wrong name"]);
-            return;
-        }
-
-        $api_key = uniqid('apk_', true);
-
-        $device = new Device(-1, $name, $width, $height, $api_key, null);
-
-        if ($this->deviceRepository->create_byUserId($device, $user_id)) {
-            $this->render('device/newDeviceSuccess', ["api_key" => $api_key]);
-        } else {
-            $this->render('device/newDevice', ["message" => "Something went wrong, try again"]);
-        }
 
     }
 

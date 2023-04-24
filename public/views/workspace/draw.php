@@ -1,72 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <link rel="stylesheet" type="text/css" href="public/css/style.css" />
-    <link rel="stylesheet" type="text/css" href="public/css/draw.css" />
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <link rel="stylesheet" type="text/css" href="public/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="public/css/draw.css"/>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>LEDs play - Draw</title>
-  </head>
-  <body>
-    <div class="draw-container">
-      <div class="toolbox">
+</head>
+<body>
+<div class="draw-container">
+    <div class="toolbox">
         <div class="tooblox-group">
-          <div class="tooblox-group-item">
-            <button>
-              <img src="public/img/logoNoText.svg" />
-            </button>
-          </div>
+            <div class="tooblox-group-item">
+                <button>
+                    <img src="public/img/logoNoText.svg"/>
+                </button>
+            </div>
         </div>
         <div class="tooblox-group">
-          <div class="tooblox-group-item tgi-small">
-            <button id="erase-btn">
-              <img src="public/img/draw/erase.svg" />
-            </button>
-          </div>
-          <div class="tooblox-group-item tgi-small active">
-            <button id="draw-btn">
-              <img src="public/img/draw/pencil.svg" />
-            </button>
-          </div>
-          <div class="tooblox-group-item tgi-small">
-            <button id="upload-btn">
-              <img src="public/img/draw/upload.svg" />
-            </button>
-          </div>
-          <div class="tooblox-group-item tgi-small">
-            <button id="save-btn">
-              <img src="public/img/draw/checkmark.svg" />
-            </button>
-          </div>
+            <div class="tooblox-group-item tgi-small">
+                <button id="erase-btn">
+                    <img src="public/img/draw/erase.svg"/>
+                </button>
+            </div>
+            <div class="tooblox-group-item tgi-small active">
+                <button id="draw-btn">
+                    <img src="public/img/draw/pencil.svg"/>
+                </button>
+            </div>
+            <div class="tooblox-group-item tgi-small">
+                <button id="upload-btn">
+                    <img src="public/img/draw/upload.svg"/>
+                </button>
+            </div>
+            <div class="tooblox-group-item tgi-small">
+                <button id="save-btn">
+                    <img src="public/img/draw/checkmark.svg"/>
+                </button>
+            </div>
         </div>
         <div class="tooblox-group unknown-width">
-          <div class="tooblox-group-item tgi-medium">
-            <button>
-              <input type="color" class="color-picker" id="color-picker-btn" />
-            </button>
-          </div>
+            <div class="tooblox-group-item tgi-medium">
+                <button>
+                    <input type="color" class="color-picker" id="color-picker-btn"/>
+                </button>
+            </div>
         </div>
-      </div>
-      <div class="draw-section">
-        <div
-          class="draw-canvas"
-          id="draw-canvas"
-          matrixW="48"
-          matrixH="32"
-        ></div>
-      </div>
     </div>
-  </body>
+    <div class="draw-section">
+        <?php if (isset($id_workspace)): ?>
+            <div
+                class="draw-canvas"
+                id="draw-canvas"
+                workspace-id="<?= $id_workspace ?>"
+                matrixW="48"
+                matrixH="32"
+            ></div>
+        <?php endif; ?>
+    </div>
+</div>
+</body>
 
-  <footer>
+<footer>
     <script
-      src="https://kit.fontawesome.com/c1c8d29a2a.js"
-      crossorigin="anonymous"
+        src="https://kit.fontawesome.com/c1c8d29a2a.js"
+        crossorigin="anonymous"
     ></script>
     <script src="public/js/draw/canvasPlayground.js"></script>
     <script src="public/js/draw/drawing.js"></script>
     <script src="public/js/draw/cpImportExport.js"></script>
     <script src="public/js/draw/drawingEvents.js"></script>
-  </footer>
+</footer>
 </html>
