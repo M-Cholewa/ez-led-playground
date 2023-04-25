@@ -147,7 +147,9 @@ class WorkspaceController extends SafeController
             return;
         }
 
-        $this->render('workspace/draw', ["id_workspace" => $id_workspace]);
+        $deviceWorkspace = $this->deviceWorkspaceRepository->get_ByWorkspaceId($id_workspace);
+
+        $this->render('workspace/draw', ["deviceWorkspace" => $deviceWorkspace]);
     }
 
     public function updateWorkspaceBytes()

@@ -17,9 +17,14 @@ nav {
   overflow: hidden;
 }
 
-nav > img {
+nav > a > img {
   width: 60%;
   margin: 1.5em;
+}
+
+nav > a {
+  display: flex;
+  justify-content: center;
 }
 
 nav > ul {

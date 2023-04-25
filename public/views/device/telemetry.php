@@ -13,7 +13,9 @@
 <div class="base-container">
     <section class="base-overlay" id="base-overlay"></section>
     <header>
-        <img src="public/img/logo.svg"/>
+        <a href="devices">
+            <img src="public/img/logo.svg"/>
+        </a>
         <a id="base-drawer-btn">
             <i class="fa-solid fa-bars"></i>
         </a>

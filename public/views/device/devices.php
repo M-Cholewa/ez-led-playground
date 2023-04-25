@@ -18,7 +18,9 @@
         </a>
     </header>
     <nav>
-        <img src="public/img/logo.svg"/>
+        <a href="devices">
+            <img src="public/img/logo.svg"/>
+        </a>
         <ul class="base-menu">
             <li><a href="#" class="active">Devices</a></li>
             <li><a href="workspaces">Workspaces</a></li>

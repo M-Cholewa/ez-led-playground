@@ -51,13 +51,13 @@
         </div>
     </div>
     <div class="draw-section">
-        <?php if (isset($id_workspace)): ?>
+        <?php if (isset($deviceWorkspace)): ?>
             <div
                 class="draw-canvas"
                 id="draw-canvas"
-                workspace-id="<?= $id_workspace ?>"
-                matrixW="48"
-                matrixH="32"
+                workspace-id="<?= $deviceWorkspace->getWorkspace()->getId(); ?>"
+                matrixW="<?= $deviceWorkspace->getDevice()->getWidth(); ?>"
+                matrixH="<?= $deviceWorkspace->getDevice()->getHeight(); ?>"
             ></div>
         <?php endif; ?>
     </div>

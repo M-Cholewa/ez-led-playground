@@ -1,5 +1,7 @@
 <?php
 
+use models\DeviceWorkspace;
+
 require_once 'Repository.php';
 require_once __DIR__ . '/../models/Workspace.php';
 require_once __DIR__ . '/../models/Device.php';
@@ -84,6 +86,40 @@ class DeviceWorkspaceRepository extends Repository
             return true;
         } catch (PDOException $e) {
             return false;
+        }
+    }
+
+    public function get_ByWorkspaceId(int $id_workspace): ?DeviceWorkspace
+    {
+        try {
+            $stmt = $this->database->connect()->prepare('
+            SELECT 
+                    d.*,
+                   w.id as workspace_id,
+                   w.id_user as workspace_id_user,
+                   w.id_device as workspace_id_device,
+                   w.name  as workspace_name 
+               FROM workspaces w 
+                LEFT JOIN devices d on d.id = w.id_device
+            where w.id = :id_workspace
+            ');
+            $stmt->bindParam(':id_workspace', $id_workspace, PDO::PARAM_INT);
+            $stmt->execute();
+
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if (!$row) {
+                return null;
+            }
+
+            $device = new \models\Device($row["id"], $row["name"], $row["width"],
+                $row["height"], $row["api_key"], null);
+            $workspace = new \models\Workspace($row["workspace_id"], $row["workspace_id_user"],
+                $row["workspace_id_device"], $row["workspace_name"], array());
+
+            return new \models\DeviceWorkspace($device, $workspace);
+        } catch (PDOException $e) {
+            return null;
         }
     }
 }
