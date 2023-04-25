@@ -30,10 +30,7 @@ const importCanvasData = (bytes) => {
 
         for (let i = 0; i < bytes.length; i += 3) {
             var sl = bytes.slice(i, i + 3);
-            var pixel = `#
-      ${__toHexStr(sl[0])}
-      ${sliced[1].toString(16)}
-      ${sliced[2].toString(16)}`;
+            var pixel = `#${__toHexStr(sl[0])}${__toHexStr(sl[1])}${__toHexStr(sl[2])}`;
             pixels.push(pixel);
         }
 
@@ -50,9 +47,11 @@ const importCanvasData = (bytes) => {
 function saveWorkspace() {
     const id_workspace = drawCanvasDiv.getAttribute("workspace-id");
     const workspace_bytes = exportCanvasData();
+
     const data = {
         id_workspace: parseInt(id_workspace),
-        workspace_bytes: workspace_bytes
+        workspace_bytes: workspace_bytes,
+        setAsActive: true // set as active workspace for this device
     };
 
     fetch("/updateWorkspaceBytes", {
@@ -81,13 +80,12 @@ function loadWorkspace() {
     }).then(function (response) {
         return response.json();
     }).then((responseJson) => {
-        console.log(responseJson);
-        //importCanvasData(responseJson.workspace_bytes);
+        importCanvasData(responseJson);
     }).catch((err) => {
         alert("couldn't load this workspace" + err);
     });
 }
 
 const __toHexStr = (val) => {
-    return val.toString(16);
+    return val.toString(16).padStart(2, "0");
 };

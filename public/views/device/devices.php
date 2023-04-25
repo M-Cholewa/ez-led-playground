@@ -22,7 +22,7 @@
         <ul class="base-menu">
             <li><a href="#" class="active">Devices</a></li>
             <li><a href="workspaces">Workspaces</a></li>
-            <li><a href="admin">Admin</a></li>
+            <li><a href="users">Admin</a></li>
         </ul>
         <ul>
             <li><a href="logout">Log out</a></li>

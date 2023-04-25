@@ -167,7 +167,12 @@ class WorkspaceRepository extends Repository
         try {
             $workspace_bytes = stream_get_contents($resource);
             $workspace_bytes = \Utility\LZW::decompress($workspace_bytes);
-            return str_split($workspace_bytes, 2);
+            $workspace_bytes = explode(",", $workspace_bytes); // to array of strings
+            $bytes = array();
+            foreach ($workspace_bytes as $workspace_byte) { // to array of decimal
+                $bytes[] = intval($workspace_byte);
+            }
+            return $bytes;
         } catch (Exception $ex) {
             return array(0);
         }
@@ -176,7 +181,7 @@ class WorkspaceRepository extends Repository
     private function prepareWorkspaceBytes(array $workspace_bytes): string
     {
         try {
-            $resource = implode($workspace_bytes);
+            $resource = implode(",", $workspace_bytes);
             return \Utility\LZW::compress($resource);
         } catch (Exception $ex) {
             return "";

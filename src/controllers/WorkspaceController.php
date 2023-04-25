@@ -161,6 +161,8 @@ class WorkspaceController extends SafeController
 
         $id_workspace = $this->getJsonDecoded()['id_workspace'];
         $workspace_bytes = $this->getJsonDecoded()['workspace_bytes'];
+        $setAsActive = $this->getJsonDecoded()['setAsActive'];
+
         $id_user = $this->getUser()->getId();
 
         if ($id_workspace == null || $workspace_bytes == null) {
@@ -176,6 +178,12 @@ class WorkspaceController extends SafeController
         $workspace = $this->workspaceRepository->get_ById($id_workspace);
         $workspace->setWorkspaceBytes($workspace_bytes);
         $result = $this->workspaceRepository->updateWorkspaceBytes_ById($id_workspace, $workspace_bytes);
+
+        if ($result) {
+            if ($setAsActive) {
+                $result = $this->deviceWorkspaceRepository->upsert_workspace($id_workspace, $workspace->getIdDevice());
+            }
+        }
 
         if ($result) {
             http_response_code(200);
@@ -215,11 +223,7 @@ class WorkspaceController extends SafeController
 
         http_response_code(200);
         $wb = $workspace->getWorkspaceBytes();
-//        var_dump($wb);
-        $en =  json_encode(array_values($wb), JSON_INVALID_UTF8_IGNORE);
-        var_dump($en);
-//        echo print_r($wb);
-//        echo json_encode(["bytes"=>array_values($wb)],JSON_FORCE_OBJECT);
+        echo json_encode($wb);
     }
 
 

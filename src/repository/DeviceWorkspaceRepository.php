@@ -68,4 +68,22 @@ class DeviceWorkspaceRepository extends Repository
             return array();
         }
     }
+
+    public function upsert_workspace($id_workspace, $id_device): bool
+    {
+        try {
+
+            $stmt = $this->database->connect()->prepare('
+               INSERT INTO devices_active_workspaces (id_device, id_workspace) VALUES (:id_device, :id_workspace)
+                ON CONFLICT (id_device)
+                DO UPDATE SET id_workspace = excluded.id_workspace;
+            ');
+            $stmt->bindParam(':id_device', $id_device, PDO::PARAM_INT);
+            $stmt->bindParam(':id_workspace', $id_workspace, PDO::PARAM_INT);
+            $stmt->execute();
+            return true;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
 }

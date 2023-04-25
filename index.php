@@ -24,4 +24,9 @@ Router::post('updateWorkspaceBytes', 'WorkspaceController');
 Router::post('getWorkspaceBytes', 'WorkspaceController');
 Router::get('draw', 'WorkspaceController');
 
+Router::get('users', 'AdminController');
+Router::get('newUser', 'AdminController');
+Router::get('searchUser', 'AdminController');
+Router::get('removeUser', 'AdminController');
+
 Router::run($path);

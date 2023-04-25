@@ -14,7 +14,9 @@
         <div class="tooblox-group">
             <div class="tooblox-group-item">
                 <button>
-                    <img src="public/img/logoNoText.svg"/>
+                    <a href="workspaces">
+                        <img src="public/img/logoNoText.svg"/>
+                    </a>
                 </button>
             </div>
         </div>
@@ -29,7 +31,7 @@
                     <img src="public/img/draw/pencil.svg"/>
                 </button>
             </div>
-            <div class="tooblox-group-item tgi-small">
+            <div class="tooblox-group-item tgi-small" style="display: none">
                 <button id="upload-btn">
                     <img src="public/img/draw/upload.svg"/>
                 </button>
