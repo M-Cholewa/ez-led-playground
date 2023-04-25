@@ -1,6 +1,9 @@
 <?php
 
-use models\DeviceWorkspace;
+namespace repository\workspace;
+
+use models\workspace\DeviceWorkspace;
+use Repository;
 
 require_once 'Repository.php';
 require_once __DIR__ . '/../models/Workspace.php';
@@ -30,12 +33,12 @@ class DeviceWorkspaceRepository extends Repository
             $deviceWorkspaces = array();
 
             foreach ($rows as $row) {
-                $device = new \models\Device($row["id"], $row["name"], $row["width"],
+                $device = new \models\device\Device($row["id"], $row["name"], $row["width"],
                     $row["height"], $row["api_key"], null);
-                $workspace = new \models\Workspace($row["workspace_id"], $row["workspace_id_user"],
+                $workspace = new \models\workspace\Workspace($row["workspace_id"], $row["workspace_id_user"],
                     $row["workspace_id_device"], $row["workspace_name"], array());
 
-                $deviceWorkspaces[] = new \models\DeviceWorkspace($device, $workspace);
+                $deviceWorkspaces[] = new \models\workspace\DeviceWorkspace($device, $workspace);
             }
 
             return $deviceWorkspaces;
@@ -112,12 +115,12 @@ class DeviceWorkspaceRepository extends Repository
                 return null;
             }
 
-            $device = new \models\Device($row["id"], $row["name"], $row["width"],
+            $device = new \models\device\Device($row["id"], $row["name"], $row["width"],
                 $row["height"], $row["api_key"], null);
-            $workspace = new \models\Workspace($row["workspace_id"], $row["workspace_id_user"],
+            $workspace = new \models\workspace\Workspace($row["workspace_id"], $row["workspace_id_user"],
                 $row["workspace_id_device"], $row["workspace_name"], array());
 
-            return new \models\DeviceWorkspace($device, $workspace);
+            return new \models\workspace\DeviceWorkspace($device, $workspace);
         } catch (PDOException $e) {
             return null;
         }

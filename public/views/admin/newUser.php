@@ -95,6 +95,7 @@
         src="https://kit.fontawesome.com/c1c8d29a2a.js"
         crossorigin="anonymous"
     ></script>
+    <script src="public/js/newUser.js"></script>
     <script src="public/js/base.js"></script>
 </footer>
 </html>

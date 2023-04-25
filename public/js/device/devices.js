@@ -86,6 +86,4 @@ searchInput.addEventListener("keyup", () => {
 });
 
 
-
-
 addTableClicks();

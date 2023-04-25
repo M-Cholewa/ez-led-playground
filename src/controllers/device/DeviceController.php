@@ -1,6 +1,11 @@
 <?php
 
-use models\Device;
+namespace controllers\device;
+
+use models\device\Device;
+use repository\device\DeviceRepository;
+use repository\device\TelemetryRepository;
+use SafeController;
 
 require_once 'SafeController.php';
 require_once __DIR__ . '/../models/Device.php';

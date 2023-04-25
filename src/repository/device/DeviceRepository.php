@@ -1,6 +1,9 @@
 <?php
 
-use models\Device;
+namespace repository\device;
+
+use models\device\Device;
+use Repository;
 
 require_once 'Repository.php';
 require_once __DIR__ . '/../models/Device.php';

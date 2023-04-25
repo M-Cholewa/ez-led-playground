@@ -1,6 +1,9 @@
 <?php
 
-use models\User;
+namespace repository\admin;
+
+use models\admin\User;
+use Repository;
 
 require_once 'Repository.php';
 require_once __DIR__ . '/../models/User.php';

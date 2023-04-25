@@ -1,6 +1,8 @@
 <?php
 
-namespace models;
+namespace models\workspace;
+
+use models\device\Device;
 
 require_once __DIR__ . '/../models/Workspace.php';
 require_once __DIR__ . '/../models/Device.php';

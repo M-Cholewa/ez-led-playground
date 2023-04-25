@@ -340,3 +340,7 @@ header > a {
     content: "Active workspace";
   }
 }
+
+.no-valid{
+  border-color: red!important;
+}

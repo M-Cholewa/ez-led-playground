@@ -1,6 +1,9 @@
 <?php
 
-use models\Workspace;
+namespace repository\workspace;
+
+use models\workspace\Workspace;
+use Repository;
 
 require_once 'Repository.php';
 require_once __DIR__ . '/../models/Workspace.php';

@@ -1,6 +1,6 @@
 <?php
 
-use models\User;
+use models\admin\User;
 
 require_once 'AppController.php';
 require_once __DIR__ . '/../models/User.php';

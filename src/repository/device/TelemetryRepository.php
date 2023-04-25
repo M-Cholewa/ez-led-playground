@@ -1,6 +1,9 @@
 <?php
 
-use models\DeviceTelemetry;
+namespace repository\device;
+
+use models\device\DeviceTelemetry;
+use Repository;
 
 require_once 'Repository.php';
 require_once __DIR__ . '/../models/DeviceTelemetry.php';

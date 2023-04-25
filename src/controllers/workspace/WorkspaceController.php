@@ -1,6 +1,12 @@
 <?php
 
-use models\Workspace;
+namespace controllers\workspace;
+
+use models\workspace\Workspace;
+use repository\device\DeviceRepository;
+use repository\workspace\DeviceWorkspaceRepository;
+use repository\workspace\WorkspaceRepository;
+use SafeController;
 
 require_once 'SafeController.php';
 require_once __DIR__ . '/../models/Workspace.php';

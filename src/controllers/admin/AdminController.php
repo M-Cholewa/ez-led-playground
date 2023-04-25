@@ -1,6 +1,10 @@
 <?php
 
-use models\User;
+namespace controllers\admin;
+
+use models\admin\User;
+use repository\admin\UserRepository;
+use SafeController;
 
 require_once 'SafeController.php';
 require_once __DIR__ . '/../models/User.php';
