@@ -97,7 +97,9 @@
         </section>
 
         <button class="base-floating-btn">
-            <i class="fa-solid fa-plus"></i>
+            <a href="newWorkspace">
+                <i class="fa-solid fa-plus"></i>
+            </a>
         </button>
     </main>
 </div>
