@@ -30,7 +30,7 @@ class SecurityController extends AppController
             return $this->render("login", ['messages' => ['User with this email does not exist!']]);
         }
 
-        if ($user->getPassword() !== $password) {
+        if (!password_verify($password, $user->getPassword())) {
             return $this->render("login", ['messages' => ['Wrong password!']]);
         }
 
@@ -38,7 +38,8 @@ class SecurityController extends AppController
         $this->redirect("devices");
     }
 
-    public function logout(){
+    public function logout()
+    {
         session_start();
         unset($_SESSION['user']);
         $this->redirectLogin();
