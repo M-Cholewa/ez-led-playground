@@ -9,6 +9,7 @@ require_once __DIR__ . '/../repository/admin/UserRepository.php';
 
 class SecurityController extends AppController
 {
+    private int $SESSION_DURATION_S = 3 * 24 * 60 * 60; // 3 days
 
     public function login()
     {
@@ -35,20 +36,15 @@ class SecurityController extends AppController
             return $this->render("login", ['messages' => ['Wrong password!']]);
         }
 
-        $this->storeSessionCookie($user);
+        $this->loginUser($user);
         $this->redirect("devices");
     }
 
     public function logout()
     {
-        session_start();
-        unset($_SESSION['user']);
+        $this->logoutUser();
         $this->redirectLogin();
     }
 
-    private function storeSessionCookie(User $user)
-    {
-        session_start();
-        $_SESSION['user'] = serialize($user);
-    }
+
 }

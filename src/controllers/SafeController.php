@@ -25,9 +25,4 @@ class SafeController extends AppController
         }
     }
 
-    protected function getUser():?User
-    {
-        return unserialize($_SESSION['user']);
-    }
-
 }

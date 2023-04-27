@@ -1,5 +1,7 @@
 <?php
 
+use models\admin\User;
+
 class AppController
 {
     private $request;
@@ -59,5 +61,22 @@ class AppController
             $output = ob_get_clean();
         }
         print $output;
+    }
+
+    protected function loginUser(User $user)
+    {
+        session_set_cookie_params(30 * 60, "/");
+        session_start();
+        $_SESSION['user'] = serialize($user);
+    }
+
+    protected function logoutUser(){
+        session_start();
+        unset($_SESSION['user']);
+    }
+
+    protected function getUser():?User
+    {
+        return unserialize($_SESSION['user']);
     }
 }
