@@ -1,9 +1,10 @@
 <?php
 
+
 use models\admin\User;
 
 require_once 'AppController.php';
-require_once __DIR__ . '/../models/User.php';
+require_once __DIR__ . '/../models/admin/User.php';
 
 class SafeController extends AppController
 {

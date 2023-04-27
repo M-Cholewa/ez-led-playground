@@ -3,12 +3,14 @@
 namespace repository\workspace;
 
 use models\workspace\DeviceWorkspace;
+use PDO;
+use PDOException;
 use Repository;
 
-require_once 'Repository.php';
-require_once __DIR__ . '/../models/Workspace.php';
-require_once __DIR__ . '/../models/Device.php';
-require_once __DIR__ . '/../models/DeviceWorkspace.php';
+require_once __DIR__ .'/../../repository/Repository.php';
+require_once __DIR__ . '/../../models/workspace/Workspace.php';
+require_once __DIR__ . '/../../models/device/Device.php';
+require_once __DIR__ . '/../../models/workspace/DeviceWorkspace.php';
 
 class DeviceWorkspaceRepository extends Repository
 {
@@ -38,7 +40,7 @@ class DeviceWorkspaceRepository extends Repository
                 $workspace = new \models\workspace\Workspace($row["workspace_id"], $row["workspace_id_user"],
                     $row["workspace_id_device"], $row["workspace_name"], array());
 
-                $deviceWorkspaces[] = new \models\workspace\DeviceWorkspace($device, $workspace);
+                $deviceWorkspaces[] = new DeviceWorkspace($device, $workspace);
             }
 
             return $deviceWorkspaces;

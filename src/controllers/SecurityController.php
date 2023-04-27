@@ -4,8 +4,8 @@ use models\admin\User;
 use repository\admin\UserRepository;
 
 require_once 'AppController.php';
-require_once __DIR__ . '/../models/User.php';
-require_once __DIR__ . '/../repository/UserRepository.php';
+require_once __DIR__ . '/../models/admin/User.php';
+require_once __DIR__ . '/../repository/admin/UserRepository.php';
 
 class SecurityController extends AppController
 {

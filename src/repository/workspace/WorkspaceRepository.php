@@ -2,12 +2,15 @@
 
 namespace repository\workspace;
 
+use Exception;
 use models\workspace\Workspace;
+use PDO;
+use PDOException;
 use Repository;
 
-require_once 'Repository.php';
-require_once __DIR__ . '/../models/Workspace.php';
-require_once __DIR__ . '/../utility/LZW.php';
+require_once __DIR__ .'/../../repository/Repository.php';
+require_once __DIR__ . '/../../models/workspace/Workspace.php';
+require_once __DIR__ . '/../../utility/LZW.php';
 
 class WorkspaceRepository extends Repository
 {

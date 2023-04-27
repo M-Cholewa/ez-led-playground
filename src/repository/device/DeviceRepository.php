@@ -3,10 +3,12 @@
 namespace repository\device;
 
 use models\device\Device;
+use PDO;
+use PDOException;
 use Repository;
 
-require_once 'Repository.php';
-require_once __DIR__ . '/../models/Device.php';
+require_once __DIR__ .'/../../repository/Repository.php';
+require_once __DIR__ . '/../../models/device/Device.php';
 
 class DeviceRepository extends Repository
 {

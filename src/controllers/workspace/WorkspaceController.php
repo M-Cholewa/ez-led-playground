@@ -1,20 +1,18 @@
 <?php
 
-namespace controllers\workspace;
 
 use models\workspace\Workspace;
 use repository\device\DeviceRepository;
 use repository\workspace\DeviceWorkspaceRepository;
 use repository\workspace\WorkspaceRepository;
-use SafeController;
 
-require_once 'SafeController.php';
-require_once __DIR__ . '/../models/Workspace.php';
-require_once __DIR__ . '/../models/DeviceWorkspace.php';
-require_once __DIR__ . '/../repository/WorkspaceRepository.php';
-require_once __DIR__ . '/../repository/DeviceRepository.php';
-require_once __DIR__ . '/../repository/DeviceWorkspaceRepository.php';
-require_once __DIR__ . '/../utility/Utility.php';
+require_once __DIR__ .'/../../controllers/SafeController.php';
+require_once __DIR__ . '/../../models/workspace/Workspace.php';
+require_once __DIR__ . '/../../models/workspace/DeviceWorkspace.php';
+require_once __DIR__ . '/../../repository/workspace/WorkspaceRepository.php';
+require_once __DIR__ . '/../../repository/workspace/DeviceWorkspaceRepository.php';
+require_once __DIR__ . '/../../repository/device/DeviceRepository.php';
+require_once __DIR__ . '/../../utility/Utility.php';
 
 class WorkspaceController extends SafeController
 {

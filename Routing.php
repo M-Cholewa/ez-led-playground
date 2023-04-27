@@ -2,9 +2,9 @@
 
 require_once 'src/controllers/DefaultController.php';
 require_once 'src/controllers/SecurityController.php';
-require_once 'src/controllers/DeviceController.php';
-require_once 'src/controllers/WorkspaceController.php';
-require_once 'src/controllers/AdminController.php';
+require_once 'src/controllers/device/DeviceController.php';
+require_once 'src/controllers/workspace/WorkspaceController.php';
+require_once 'src/controllers/admin/AdminController.php';
 
 class Router
 {

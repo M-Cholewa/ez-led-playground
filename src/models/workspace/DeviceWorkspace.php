@@ -4,8 +4,8 @@ namespace models\workspace;
 
 use models\device\Device;
 
-require_once __DIR__ . '/../models/Workspace.php';
-require_once __DIR__ . '/../models/Device.php';
+require_once __DIR__ . '/../../models/workspace/Workspace.php';
+require_once __DIR__ . '/../../models/device/Device.php';
 
 class DeviceWorkspace
 {

@@ -3,10 +3,12 @@
 namespace repository\admin;
 
 use models\admin\User;
+use PDO;
+use PDOException;
 use Repository;
 
-require_once 'Repository.php';
-require_once __DIR__ . '/../models/User.php';
+require_once __DIR__ .'/../../repository/Repository.php';
+require_once __DIR__ . '/../../models/admin/User.php';
 
 class UserRepository extends Repository
 {
@@ -86,8 +88,6 @@ class UserRepository extends Repository
 
             return true;
         } catch (PDOException $e) {
-            var_dump($e);
-            die();
             return false;
         }
     }

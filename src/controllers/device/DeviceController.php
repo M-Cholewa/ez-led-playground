@@ -1,16 +1,14 @@
 <?php
 
-namespace controllers\device;
 
 use models\device\Device;
 use repository\device\DeviceRepository;
 use repository\device\TelemetryRepository;
-use SafeController;
 
-require_once 'SafeController.php';
-require_once __DIR__ . '/../models/Device.php';
-require_once __DIR__ . '/../repository/DeviceRepository.php';
-require_once __DIR__ . '/../repository/TelemetryRepository.php';
+require_once __DIR__ .'/../../controllers/SafeController.php';
+require_once __DIR__ . '/../../models/device/Device.php';
+require_once __DIR__ . '/../../repository/device/DeviceRepository.php';
+require_once __DIR__ . '/../../repository/device/TelemetryRepository.php';
 
 class DeviceController extends SafeController
 {

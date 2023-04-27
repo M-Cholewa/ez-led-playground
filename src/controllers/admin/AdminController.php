@@ -1,14 +1,12 @@
 <?php
 
-namespace controllers\admin;
 
 use models\admin\User;
 use repository\admin\UserRepository;
-use SafeController;
 
-require_once 'SafeController.php';
-require_once __DIR__ . '/../models/User.php';
-require_once __DIR__ . '/../repository/UserRepository.php';
+require_once __DIR__ .'/../../controllers/SafeController.php';
+require_once __DIR__ . '/../../models/admin/User.php';
+require_once __DIR__ . '/../../repository/admin/UserRepository.php';
 
 class AdminController extends SafeController
 {

@@ -3,10 +3,11 @@
 namespace repository\device;
 
 use models\device\DeviceTelemetry;
+use PDO;
 use Repository;
 
-require_once 'Repository.php';
-require_once __DIR__ . '/../models/DeviceTelemetry.php';
+require_once __DIR__ .'/../../repository/Repository.php';
+require_once __DIR__ . '/../../models/device/DeviceTelemetry.php';
 
 class TelemetryRepository extends Repository
 {

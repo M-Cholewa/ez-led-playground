@@ -112,7 +112,7 @@
         src="https://kit.fontawesome.com/c1c8d29a2a.js"
         crossorigin="anonymous"
     ></script>
-    <script src="public/js/workspaces.js"></script>
+    <script src="public/js/workspace/workspaces.js"></script>
     <script src="public/js/base.js"></script>
 </footer>
 
