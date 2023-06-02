@@ -1,12 +1,14 @@
 <?php
 
-require_once __DIR__.'/../../Database.php';
+
+use repository\Database;
+
+require_once 'Database.php';
 
 class Repository {
-    protected $database;
-
+    protected Database $database;
     public function __construct()
     {
-        $this->database = new Database();
+        $this->database = Database::getInstance();
     }
 }
